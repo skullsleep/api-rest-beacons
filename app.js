@@ -1,3 +1,4 @@
+// //ORIGINAL
 // var express = require("express"),
 //   app = express(),
 //   bodyParser = require("body-parser"),
@@ -24,46 +25,50 @@
 //   console.log("error to coonect DB: ", err.message);
 // });
 
+
 // // Middlewares
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 // app.use(methodOverride());
 
 // // Import Models and controllers
-// var Models = require('./models/BeaconModel')(app, mongoose);
-// var BeaconCtrl = require('./controllers/BeaconCtrl');
+// var models = require('./models/tvshow')(app, mongoose);
+// var TVShowCtrl = require('./controllers/tvshows');
 
-// // // Example Route
-// // var router = express.Router();
-// // router.get('/', function (req, res) {
-// //   res.send("Hello world!");
-// // });
-// // app.use(router);
+// // Example Route
+// var router = express.Router();
+// router.get('/', function (req, res) {
+//   res.send("Hello world!");
+// });
+// app.use(router);
 
 // // API routes
-// var beacons = express.Router();
-// console.log("beacons express: ", beacons);
+// var tvshows = express.Router();
 
-// // beacons.route('/beacons')
-// //   .get(BeaconCtrl.findAllBeacons)
-// //   .post(BeaconCtrl.addTVShow);
+// tvshows.route('/tvshows')
+//   .get(TVShowCtrl.findAllTVShows)
+//   .post(TVShowCtrl.addTVShow);
 
-// // beacons.route('/beacons/:id')
-// //   .get(BeaconCtrl.findById)
-// //   .put(BeaconCtrl.updateTVShow)
-// //   .delete(BeaconCtrl.deleteTVShow);
+// tvshows.route('/tvshows/:id')
+//   .get(TVShowCtrl.findById)
+//   .put(TVShowCtrl.updateTVShow)
+//   .delete(TVShowCtrl.deleteTVShow);
 
-// app.use('/api', beacons);
+// app.use('/api', tvshows);
 
 // // Start server
-// // app.listen(3000, function () {
-// //   console.log("Node server running on http://localhost:3000");
-// // });
+// app.listen(3000, function () {
+//   console.log("Node server running on http://localhost:3000");
+// });
 
 
 
 
 
+
+
+
+//CUSTOM
 var express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
@@ -97,8 +102,8 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 // Import Models and controllers
-var models = require('./models/tvshow')(app, mongoose);
-var TVShowCtrl = require('./controllers/tvshows');
+var models = require('./models/BeaconModel')(app, mongoose);
+var BeaconCtrl = require('./controllers/BeaconCtrl');
 
 // Example Route
 var router = express.Router();
@@ -110,18 +115,18 @@ app.use(router);
 // API routes
 var tvshows = express.Router();
 
-tvshows.route('/tvshows')
-  .get(TVShowCtrl.findAllTVShows)
-  .post(TVShowCtrl.addTVShow);
+tvshows.route('/beacons')
+  .get(BeaconCtrl.findAllItems)
+  .post(BeaconCtrl.addItem);
 
-tvshows.route('/tvshows/:id')
-  .get(TVShowCtrl.findById)
-  .put(TVShowCtrl.updateTVShow)
-  .delete(TVShowCtrl.deleteTVShow);
+tvshows.route('/beacons/:id')
+  .get(BeaconCtrl.findById)
+  .put(BeaconCtrl.updateItem)
+  .delete(BeaconCtrl.deleteItem);
 
 app.use('/api', tvshows);
 
-// Start server
-app.listen(3000, function () {
-  console.log("Node server running on http://localhost:3000");
-});
+// // Start server
+// app.listen(3000, function () {
+//   console.log("Node server running on http://localhost:3000");
+// });
