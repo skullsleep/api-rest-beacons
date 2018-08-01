@@ -1,5 +1,6 @@
 {
   "name": "node-api-rest-example",
+  "main": "app.js",
   "version": "2.0.0",
   "dependencies": {
     "body-parser": "^1.5.1",
