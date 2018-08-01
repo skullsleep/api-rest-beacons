@@ -126,7 +126,9 @@ tvshows.route('/beacons/:id')
 
 app.use('/api', tvshows);
 
+var port = process.env.PORT || 3000;
+
 // // Start server
-// app.listen(3000, function () {
-//   console.log("Node server running on http://localhost:3000");
-// });
+app.listen(port, function () {
+  console.log("Node server running on PORT : ", port);
+});
