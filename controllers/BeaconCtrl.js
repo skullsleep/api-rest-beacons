@@ -35,6 +35,8 @@ exports.addItem = function (req, res) {
 	var tvshow = new BCModel({
 		name: req.body.name,
 		uuid: req.body.uuid,
+		major: req.body.major,
+		minor: req.body.minor,
 		address: req.body.address,
 		message: req.body.message
 	});
@@ -51,6 +53,8 @@ exports.updateItem = function (req, res) {
 	BCModel.findById(req.params.id, function (err, tvshow) {
 		tvshow.name = req.body.name;
 		tvshow.uuid = req.body.uuid;
+		tvshow.major = req.body.major;
+		tvshow.minor = req.body.minor;
 		tvshow.address = req.body.address;
 		tvshow.message = req.body.message;
 
